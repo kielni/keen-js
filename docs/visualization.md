@@ -265,10 +265,31 @@ client.draw(count, document.getElementById("count-pageviews-metric"), {
 
 **Additional options**
 
-* `chartOptions.prefix`: string to prepend to the beginning of the result value
+* `chartOptions.prefix`: string to prepend to the beginning of the result value (great for currencies like $)
 * `chartOptions.suffix`: string to append to the end of the result value
 * `chartOptions.prettyNumber`: use short syntax to render numbers (eg: 300k), enabled by default
 
+Example using a "$" in front of the metric:
+
+```javascript
+var count = new Keen.Query("sum", {
+  eventCollection: "item_purchases",
+  targetProperty: "price",
+  timeframe: "this_14_days"
+});
+client.draw(count, document.getElementById("revenue-metric"), {
+  chartType: "metric",
+  title: "Total Pageviews",
+  colors: ["#49c5b1"],
+  chartOptions: {
+    prefix:"$"
+  }
+});
+```
+
+```html
+<div id="revenue-metric"></div>
+```
 
 ### Pie Chart
 
