@@ -4568,7 +4568,7 @@ module.exports = function(){
     capabilities: dataTypes,
     dependencies: [{
       type: 'script',
-      url: 'https://www.google.com/jsapi',
+      url: 'https://www.gstatic.com/charts/loader.js',
       cb: function(done) {
         if (typeof google === 'undefined'){
           this.trigger("error", "Problem loading Google Charts library. Please contact us!");
