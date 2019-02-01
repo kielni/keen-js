@@ -4575,12 +4575,11 @@ module.exports = function(){
           done();
         }
         else {
-          google.load('visualization', '1.1', {
+          // https://developers.google.com/chart/interactive/docs/basic_load_libs#updateloader
+          google.charts.load('current', {
               packages: ['corechart', 'table'],
-              callback: function(){
-                done();
-              }
           });
+          google.charts.setOnLoadCallback(done());
         }
       }
     }]

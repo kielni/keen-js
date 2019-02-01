@@ -104,7 +104,6 @@ module.exports = function(){
     capabilities: dataTypes,
     dependencies: [{
       type: 'script',
-      //url: 'https://www.google.com/jsapi',
       url: 'https://www.gstatic.com/charts/loader.js',
       cb: function(done) {
         if (typeof google === 'undefined'){
@@ -112,12 +111,11 @@ module.exports = function(){
           done();
         }
         else {
-          google.load('visualization', '1.1', {
+          // https://developers.google.com/chart/interactive/docs/basic_load_libs#updateloader
+          google.charts.load('current', {
               packages: ['corechart', 'table'],
-              callback: function(){
-                done();
-              }
           });
+          google.charts.setOnLoadCallback(done());
         }
       }
     }]
